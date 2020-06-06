@@ -17,9 +17,14 @@
             <strong>Ошибка!</strong> Указанный вами пользователь не существует.
         </div>
     <? } ?>
+    <? if (!empty($pageData['errors']['enterDataCorrectly'])) { ?>
+        <div class="alert alert-danger" id="enterDataCorrectly">
+            <strong>Ошибка!</strong> Все поля являются обязательными.
+        </div>
+    <? } ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <button class="btn btn-success" data-toggle="modal" data-target="#addTask">Добавить задачу</button>
+            <button class="btn btn-success" data-toggle="modal" data-target="#createTask">Добавить задачу</button>
             <ul class="navbar-nav mr-auto">
             </ul>
             <? if (empty($_SESSION['user_id'])) { ?>
@@ -47,7 +52,7 @@
 </footer>
 
 <!-- Modal Forms -->
-<div class="modal fade" id="addTask" tabindex="-1" role="dialog" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+<div class="modal fade" id="createTask" tabindex="-1" role="dialog" aria-labelledby="createTaskModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -57,7 +62,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="newTaskForm" type="post" name="newTaskForm" action="/addTask">
+                <form id="newTaskForm" method="post" name="newTaskForm" action="createTask?page=<?= $_GET['page'] ?>">
                     <div class="form-group">
                         <label for="username" class="col-form-label">Пользователь:</label>
                         <input type="text" class="form-control" id="username" name="username" required>
@@ -113,6 +118,7 @@
 
 <script>
     $('#userNotExists').delay(3000).slideUp(500);
+    $('#enterDataCorrectly').delay(3000).slideUp(500);
 </script>
 </body>
 </html>

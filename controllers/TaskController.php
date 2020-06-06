@@ -64,7 +64,13 @@ class TaskController extends Controller
 
     public function createTaskAction()
     {
+        if (empty($_POST['username']) || empty($_POST['email']) || empty($_POST['task'])) {
+            $this->pageData['errors']['enterDataCorrectly'] = 1;
+        } else {
+            $this->model->createTask($_POST['username'], $_POST['email'], $_POST['task']);
+        }
 
+        $this->indexAction();
     }
 
     public function updateTaskAction()

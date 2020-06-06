@@ -84,7 +84,7 @@ class TaskModel extends Model
     public function createTask($username, $email, $task)
     {
         $sql = "INSERT INTO tasks(username, email, task, status)
-                VALUES({$username}, {$email}, {$task}, 1)
+                VALUES('{$username}', '{$email}', '{$task}', 1)
                 ";
         $stmt = $this->db->prepare($sql);
 
