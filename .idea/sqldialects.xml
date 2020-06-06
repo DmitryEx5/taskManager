@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/migrations/1_tasks_table_create.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/migrations/2_users_table_create.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/migrations/3_users_insert.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/models/TaskModel.php" dialect="GenericSQL" />
+  </component>
+</project>
