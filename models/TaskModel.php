@@ -58,25 +58,7 @@ class TaskModel extends Model
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-        $result = $this->getStatusText($result);
-        return $this->addUserData($result);
-    }
-
-    /**
-     * @param $data
-     * @return mixed
-     */
-    private function addUserData($data)
-    {
-        $userModel = new UserModel();
-        foreach ($data as $key => $item) {
-            $user = $userModel->getById($item['user_id']);
-            $item['email'] = $user->email;
-            $item['username'] = $user->username;
-            $data[$key] = $item;
-        }
-
-        return $data;
+        return $this->getStatusText($result);
     }
 
     /**
@@ -93,42 +75,47 @@ class TaskModel extends Model
         return $data;
     }
 
-//    public function saveProductInfo($id, $name, $price) {
-//        $sql = "UPDATE products
-//                SET price = :price, name = :name
-//                WHERE id = :id
-//                ";
-//        $stmt = $this->db->prepare($sql);
-//        $stmt->bindValue(":price", $price, PDO::PARAM_INT);
-//        $stmt->bindValue(":name", $name, PDO::PARAM_STR);
-//        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
-//        $stmt->execute();
-//        return true;
-//    }
-//
-//
-//    public function addProduct($productName, $productPrice) {
-//        $sql = "INSERT INTO products(name, price)
-//                VALUES(:productName, :productPrice)
-//                ";
-//        $stmt = $this->db->prepare($sql);
-//        $stmt->bindValue(":productName", $productName, PDO::PARAM_STR);
-//        $stmt->bindValue(":productPrice", $productPrice, PDO::PARAM_INT);
-//        $stmt->execute();
-//        return true;
-//    }
-//
-//    public function deleteProduct($id) {
-//        $sql = "DELETE FROM products WHERE id = :id";
-//        $stmt = $this->db->prepare($sql);
-//        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
-//        $stmt->execute();
-//        $count = $stmt->rowCount();
-//        if($count > 0) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
+    /**
+     * @param string $username
+     * @param string $email
+     * @param string $task
+     * @return bool
+     */
+    public function createTask($username, $email, $task)
+    {
+        $sql = "INSERT INTO tasks(username, email, task, status)
+                VALUES({$username}, {$email}, {$task}, 1)
+                ";
+        $stmt = $this->db->prepare($sql);
+
+        return $stmt->execute();
+    }
+
+    /**
+     * @param int $id
+     * @param string $task
+     * @param int $status
+     * @return bool
+     */
+    public function updateTask($id, $task, $status)
+    {
+        $sql = "UPDATE tasks
+                SET task = {$task}, status = {$status}
+                WHERE id = :id
+                ";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute();
+    }
+
+    /**
+     * @param int $id
+     * @return bool
+     */
+    public function deleteTask($id)
+    {
+        $sql = "DELETE FROM tasks WHERE id = {$id}";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute();
+    }
 
 }
