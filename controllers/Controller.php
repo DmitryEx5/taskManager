@@ -43,7 +43,7 @@ class Controller
     public function redirect($controller, $action = "index", $query = '')
     {
         $query = empty($query) ? "" : "?" . $query;
-        $location = BASE_URL . $controller . "/" . $action . $query;
+        $location = $controller . "/" . $action . $query;
         header("Location: /" . $location);
         exit;
     }
