@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `task_manager`.`users`
+CREATE TABLE IF NOT EXISTS `users`
 (
     `id`       INT(11)               NOT NULL AUTO_INCREMENT,
     `username` VARCHAR(255)          NOT NULL,
