@@ -2,7 +2,7 @@
 /** @var Model $model */
 /** @var array $pageData */
 ?>
-<div class="table-responsive text-nowrap">
+<div class="table-responsive">
     <table class="table table-hover">
         <thead>
         <tr>
@@ -75,7 +75,7 @@
                     <th scope="row"><?= $item['id'] ?></th>
                     <td><?= htmlspecialchars($item['username']); ?></td>
                     <td><?= htmlspecialchars($item['email']); ?></td>
-                    <td><?= htmlspecialchars($item['task']); ?></td>
+                    <td style="word-wrap: break-word; max-width: 300px;"><?= htmlspecialchars($item['task']); ?></td>
                     <td>
                         <?= $item['status'] ?>
                     </td>
