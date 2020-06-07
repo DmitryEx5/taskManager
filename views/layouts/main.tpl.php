@@ -1,3 +1,6 @@
+<?php
+/** @var array $pageData */
+?>
 <!doctype html>
 <html lang="ru">
 <head>

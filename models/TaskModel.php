@@ -7,33 +7,13 @@ require_once MODEL_PATH . "UserModel.php";
  */
 class TaskModel extends Model
 {
-    /**
-     * @var int
-     */
-    public $userId;
-
-    /**
-     * @var string
-     */
-    public $task;
-
-    /**
-     * @var string
-     */
-    public $status;
 
     /**
      * TaskModel constructor.
-     * @param array $fields
      */
-    public function __construct($fields = [])
+    public function __construct()
     {
-        parent::__construct($fields);
-        $this->fields['user'] = 'Пользователь';
-        $this->fields['email'] = 'Почта';
-        $this->fields['task'] = 'Задача';
-        $this->fields['status'] = 'Статус';
-
+        parent::__construct();
     }
 
     /**
