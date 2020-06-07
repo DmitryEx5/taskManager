@@ -28,6 +28,17 @@ class TaskModel extends Model
     }
 
     /**
+     * @return mixed
+     */
+    public function countAll()
+    {
+        $sql = "SELECT COUNT(*) FROM tasks";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_row()[0];
+    }
+
+    /**
      * @param int $leftLimit
      * @param int $rightLimit
      * @return mixed

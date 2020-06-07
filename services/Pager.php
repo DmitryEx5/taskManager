@@ -23,12 +23,22 @@ class Pager
             $page = intval($_GET['page']);
         }
 
+        $addToLink = "";
+        foreach ($_GET as $key => $value) {
+            if ($key == 'page') continue;
+            $addToLink .= "&{$key}={$value}";
+        }
+
+
         if ($pages > 1) {
-            $pager = "<a href='/taskManager/task/index?page=1' aria-label='Previous'><span aria-hidden='true'>«</span> Начало</a> &nbsp;";
+            $pageLink = '/taskManager/task/index?page=1' . $addToLink;
+            $pager = "<a href='{$pageLink}' aria-label='Previous'><span aria-hidden='true'>«</span> Начало</a> &nbsp;";
             for ($i = 2; $i <= $pages - 1; $i++) {
-                $pager .= "<a href='/taskManager/task/index?page=" . $i . "'>" . $i . "</a> &nbsp;";
+                $pageLink = "/taskManager/task/index?page=" . $i . $addToLink;
+                $pager .= "<a href='$pageLink'>" . $i . "</a> &nbsp;";
             }
-            $pager .= "<a href='/taskManager/task/index?page=" . $pages . "' aria-label='Next'>Конец <span aria-hidden='true'>»</span></a>";
+            $pageLink = "/taskManager/task/index?page=" . $pages . $addToLink;
+            $pager .= "<a href='$pageLink' aria-label='Next'>Конец <span aria-hidden='true'>»</span></a>";
 
             return $pager;
         }

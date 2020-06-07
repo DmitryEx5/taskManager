@@ -1,5 +1,6 @@
 <?php
 /** @var array $pageData */
+$pageNum = empty($_GET['page']) ? 1 : $_GET['page'];
 ?>
 <!doctype html>
 <html lang="ru">
@@ -39,7 +40,7 @@
             <? if (empty($_SESSION['user_id'])) { ?>
                 <button class="btn btn-danger" data-toggle="modal" data-target="#logIn"> Вход</button>
             <? } else { ?>
-                <form action="logOut?page=<?= $_GET['page'] ?>" method="post">
+                <form action="logOut?page=<?= $pageNum ?>" method="post">
                     <button class="btn btn-danger" type="submit" data-target="#logOut"> Выход
                         (<?= $pageData['userName'] ?>)
                     </button>
@@ -71,10 +72,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="newTaskForm" method="post" name="newTaskForm" action="createTask?page=<?= $_GET['page'] ?>">
+                <form id="newTaskForm" method="post" name="newTaskForm" action="createTask?page=<?= $pageNum ?>">
                     <div class="form-group">
-                        <label for="username" class="col-form-label">Пользователь:</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
+                        <label for="usernameTask" class="col-form-label">Пользователь:</label>
+                        <input type="text" class="form-control" id="usernameTask" name="username" required>
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-form-label">Email:</label>
@@ -105,10 +106,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="logInForm" method="post" name="logInForm" action="logIn?page=<?= $_GET['page'] ?>">
+                <form id="logInForm" method="post" name="logInForm" action="logIn?page=<?= $pageNum ?>">
                     <div class="form-group">
-                        <label for="username" class="col-form-label">Пользователь:</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
+                        <label for="usernameLogIn" class="col-form-label">Пользователь:</label>
+                        <input type="text" class="form-control" id="usernameLogIn" name="username" required>
                     </div>
                     <div class="form-group">
                         <label for="pwd" class="col-form-label">Пароль:</label>

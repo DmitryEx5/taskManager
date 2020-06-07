@@ -23,13 +23,13 @@
             }
         ?>
         <th>
-            <a href="index?page=<?= $_GET['page'] ?>&sortBy=username&userSortType=<?= $userSortType ?>">Пользователь</a>
+            <a href="index?page=<?= $pageNum ?>&sortBy=username&userSortType=<?= $userSortType ?>">Пользователь</a>
         </th>
         <th>
-            <a href="index?page=<?= $_GET['page'] ?>&sortBy=email&emailSortType=<?= $emailSortType ?>">Почта</a></th>
+            <a href="index?page=<?= $pageNum ?>&sortBy=email&emailSortType=<?= $emailSortType ?>">Почта</a></th>
         <th>Задача</th>
         <th>
-            <a href="index?page=<?= $_GET['page'] ?>&sortBy=status&statusSortType=<?= $statusSortType ?>">Статус</a>
+            <a href="index?page=<?= $pageNum ?>&sortBy=status&statusSortType=<?= $statusSortType ?>">Статус</a>
         </th>
         <? if ($pageData['userRole'] == 'admin') { ?>
             <th></th>
@@ -39,7 +39,7 @@
     <tbody>
     <? foreach ($pageData['itemsOnPage'] as $item) { ?>
         <? if ($pageData['userRole'] == 'admin') { ?>
-            <form method="post" action="updateTask?page=<?= $_GET['page'] ?>">
+            <form method="post" action="updateTask?page=<?= $pageNum ?>">
                 <input type="hidden" name="task_id" value="<?= $item['id'] ?>">
                 <tr>
                     <th scope="row"><?= $item['id'] ?></th>
@@ -60,7 +60,7 @@
                                     }
                                     ?>
                                     <a class="dropdown-item"
-                                       href="updateTask?page=<?= $_GET['page'] ?>&task_id=<?= $item['id'] ?>&status=<?= $key ?>&statusOnly=1"><?= $title ?></a>
+                                       href="updateTask?page=<?= $pageNum ?>&task_id=<?= $item['id'] ?>&status=<?= $key ?>&statusOnly=1"><?= $title ?></a>
                                 <? } ?>
                             </div>
                         </div>

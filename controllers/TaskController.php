@@ -42,10 +42,10 @@ class TaskController extends Controller
         $tpl = 'views/index.tpl.php';
         $this->pageData['title'] = "Задачник";
 
-        $allProducts = count($this->model->getAll());
+        $allProducts = $this->model->countAll();
 
         $totalPages = ceil($allProducts / $this->itemsPerPage);
-        $this->makeProductPager($allProducts, $totalPages);
+        $this->makeTaskPager($allProducts, $totalPages);
         $pager = new Pager();
         $pagination = $pager->drawPager($allProducts, $this->itemsPerPage);
         $this->pageData['pagination'] = $pagination;
@@ -78,17 +78,13 @@ class TaskController extends Controller
 
     public function createTaskAction()
     {
-        if (!$this->userModel->isSessionUserAdmin()) {
-            $this->redirect('task', 'index', 'page=' . $_GET['page'] . '&authorise=1');
-        }
-
         if (empty($_POST['username']) || empty($_POST['email']) || empty($_POST['task'])) {
             $this->pageData['errors']['enterDataCorrectly'] = 1;
         } else {
             $this->model->createTask($_POST['username'], $_POST['email'], $_POST['task']);
         }
 
-        $this->redirect('task', 'index', 'page=' . $_GET['page']);
+        $this->redirect('task', 'index', 'page=' . $this->model->countAll());
     }
 
     public function updateTaskAction()
@@ -114,7 +110,7 @@ class TaskController extends Controller
      * @param $allProducts
      * @param $totalPages
      */
-    public function makeProductPager($allProducts, $totalPages)
+    public function makeTaskPager($allProducts, $totalPages)
     {
         if (!isset($_GET['page']) || intval($_GET['page']) == 0 || intval($_GET['page']) == 1 || intval($_GET['page']) < 0) {
             $pageNumber = 1;

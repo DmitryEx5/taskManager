@@ -11,7 +11,7 @@ class Router
         if (($pos = strpos($_SERVER['REQUEST_URI'], '?')) !== FALSE) {
             $route = substr($_SERVER['REQUEST_URI'], 0, $pos);
         } else {
-            $route = '/task/index';
+            $route = $_SERVER['REQUEST_URI'];
         }
 
         $route = is_null($route) ? $_SERVER['REQUEST_URI'] : $route;
