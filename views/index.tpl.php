@@ -39,7 +39,7 @@
         <tbody>
         <? foreach ($pageData['itemsOnPage'] as $item) { ?>
             <? if ($pageData['userRole'] == 'admin') { ?>
-                <form method="post" action="updateTask?page=<?= $pageNum ?>">
+                <form method="post" action="/updateTask?page=<?= $pageNum ?>">
                     <input type="hidden" name="task_id" value="<?= $item['id'] ?>">
                     <tr>
                         <th scope="row"><?= $item['id'] ?></th>
