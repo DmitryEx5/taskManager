@@ -2,7 +2,7 @@
 
 session_start();
 
-define("IS_DEV", TRUE);
+define("IS_DEV", FALSE);
 define("ROOT", IS_DEV ? "/taskManager" : "");
 define("CONTROLLER_PATH", "controllers/");
 define("MODEL_PATH", "models/");
