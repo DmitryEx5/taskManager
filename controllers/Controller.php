@@ -12,7 +12,7 @@ class Controller
     public $view;
     /** @var UserModel */
     public $userModel;
-    protected $pageData = ['errors' => []];
+    protected $pageData = ['errors' => [], 'success' => []];
 
     /**
      * Controller constructor.

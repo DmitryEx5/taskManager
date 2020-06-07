@@ -32,6 +32,16 @@ $pageNum = empty($_GET['page']) ? 1 : $_GET['page'];
             <strong>Ошибка!</strong> Пожалуйста, авторизуйтесь.
         </div>
     <? } ?>
+    <? if (!empty($pageData['success']['taskAdded'])) { ?>
+        <div class="alert alert-success" id="errorHolder">
+            <strong>Отлично!</strong> Задача добавлена.
+        </div>
+    <? } ?>
+    <? if (!empty($pageData['success']['taskUpdated'])) { ?>
+        <div class="alert alert-success" id="errorHolder">
+            <strong>Отлично!</strong> Запись успешно отредактирована.
+        </div>
+    <? } ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="navbar-collapse" id="navbarSupportedContent">
             <button class="btn btn-success float-left" data-toggle="modal" data-target="#createTask">Добавить задачу</button>

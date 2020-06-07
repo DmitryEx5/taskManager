@@ -39,6 +39,14 @@ class TaskController extends Controller
             $this->pageData['errors']['authorise'] = 1;
         }
 
+        if (isset($_GET['taskAdded'])) {
+            $this->pageData['success']['taskAdded'] = 1;
+        }
+
+        if (isset($_GET['taskUpdated'])) {
+            $this->pageData['success']['taskUpdated'] = 1;
+        }
+
         $tpl = 'views/index.tpl.php';
         $this->pageData['title'] = "Задачник";
 
@@ -84,7 +92,8 @@ class TaskController extends Controller
             $this->model->createTask($_POST['username'], $_POST['email'], $_POST['task']);
         }
 
-        $this->redirect('task', 'index', 'page=' . ceil($this->model->countAll() / $this->itemsPerPage));
+        $this->redirect('task', 'index',
+            'page=' . ceil($this->model->countAll() / $this->itemsPerPage) . '&taskAdded=1');
     }
 
     public function updateTaskAction()
@@ -98,7 +107,7 @@ class TaskController extends Controller
         } else {
             $this->model->updateTask($_POST['task_id'], $_POST['task'], NULL);
         }
-        $this->redirect('task', 'index', 'page=' . $_GET['page']);
+        $this->redirect('task', 'index', 'page=' . $_GET['page'] . '&taskUpdated=1');
     }
 
     public function deleteTaskAction()
