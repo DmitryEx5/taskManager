@@ -3,7 +3,7 @@
 /** @var array $pageData */
 ?>
 <div class="table-responsive">
-    <table class="table table-hover">
+    <table class="table table-hover" style="min-height: 150px;">
         <thead>
         <tr>
             <th>#</th>
