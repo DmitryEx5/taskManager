@@ -3,7 +3,7 @@
 session_start();
 
 define("IS_DEV", TRUE);
-define("ROOT", IS_DEV ? "/taskManager" : '/');
+define("ROOT", IS_DEV ? "/taskManager" : "");
 define("CONTROLLER_PATH", "controllers/");
 define("MODEL_PATH", "models/");
 define("VIEW_PATH", "views/");
