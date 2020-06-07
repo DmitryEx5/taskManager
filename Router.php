@@ -13,6 +13,7 @@ class Router
         } else {
             $route = '/task/index';
         }
+
         $route = is_null($route) ? $_SERVER['REQUEST_URI'] : $route;
         $route = explode('/', $route);
         array_shift($route);

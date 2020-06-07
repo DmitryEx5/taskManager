@@ -8,18 +8,24 @@
     <link href="<?= ROOT ?>/bower_components/bootstrap/dist/css/bootstrap-grid.css" rel="stylesheet"
           type="text/css">
     <script src="<?= ROOT ?>/bower_components/jquery/dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="<?= ROOT ?>/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 </head>
 <body>
 <div class="wrap">
     <? if (!empty($pageData['errors']['userNotExists'])) { ?>
-        <div class="alert alert-danger" id="userNotExists">
+        <div class="alert alert-danger" id="errorHolder">
             <strong>Ошибка!</strong> Указанный вами пользователь не существует.
         </div>
     <? } ?>
     <? if (!empty($pageData['errors']['enterDataCorrectly'])) { ?>
-        <div class="alert alert-danger" id="enterDataCorrectly">
+        <div class="alert alert-danger" id="errorHolder">
             <strong>Ошибка!</strong> Все поля являются обязательными.
+        </div>
+    <? } ?>
+    <? if (!empty($pageData['errors']['authorise'])) { ?>
+        <div class="alert alert-danger" id="errorHolder">
+            <strong>Ошибка!</strong> Пожалуйста, авторизуйтесь.
         </div>
     <? } ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -117,8 +123,7 @@
 </div>
 
 <script>
-    $('#userNotExists').delay(3000).slideUp(500);
-    $('#enterDataCorrectly').delay(3000).slideUp(500);
+    $('#errorHolder').delay(3000).slideUp(500);
 </script>
 </body>
 </html>

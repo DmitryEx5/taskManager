@@ -26,8 +26,17 @@ class TaskController extends Controller
         if (!empty($_SESSION['user_id'])) {
             $user = $this->userModel->getById($_SESSION['user_id']);
             $this->pageData['userName'] = $user->username;
+            $this->pageData['userRole'] = $user->role;
         } elseif (isset($_GET['login']) && $_GET['login'] == FALSE) {
             $this->pageData['errors']['userNotExists'] = 1;
+        }
+
+        if (empty($this->pageData['userRole'])) {
+            $this->pageData['userRole'] = 'guest';
+        }
+
+        if (isset($_GET['authorise'])) {
+            $this->pageData['errors']['authorise'] = 1;
         }
 
         $tpl = 'views/index.tpl.php';
@@ -69,6 +78,10 @@ class TaskController extends Controller
 
     public function createTaskAction()
     {
+        if (!$this->userModel->isSessionUserAdmin()) {
+            $this->redirect('task', 'index', 'page=' . $_GET['page'] . '&authorise=1');
+        }
+
         if (empty($_POST['username']) || empty($_POST['email']) || empty($_POST['task'])) {
             $this->pageData['errors']['enterDataCorrectly'] = 1;
         } else {
@@ -80,7 +93,16 @@ class TaskController extends Controller
 
     public function updateTaskAction()
     {
+        if (!$this->userModel->isSessionUserAdmin()) {
+            $this->redirect('task', 'index', 'page=' . $_GET['page'] . '&authorise=1');
+        }
 
+        if (isset($_GET['statusOnly'])) {
+            $this->model->updateTask($_GET['task_id'], NULL, $_GET['status'], TRUE);
+        } else {
+            $this->model->updateTask($_POST['task_id'], $_POST['task'], NULL);
+        }
+        $this->redirect('task', 'index', 'page=' . $_GET['page']);
     }
 
     public function deleteTaskAction()

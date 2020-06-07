@@ -95,14 +95,22 @@ class TaskModel extends Model
      * @param int $id
      * @param string $task
      * @param int $status
+     * @param bool $statusOnly
      * @return bool
      */
-    public function updateTask($id, $task, $status)
+    public function updateTask($id, $task, $status, $statusOnly = FALSE)
     {
-        $sql = "UPDATE tasks
-                SET task = {$task}, status = {$status}
-                WHERE id = :id
+        if ($statusOnly) {
+            $sql = "UPDATE tasks
+                SET status = {$status}
+                WHERE id = {$id}
                 ";
+        } else {
+            $sql = "UPDATE tasks
+                SET task = '{$task}'
+                WHERE id = {$id}
+                ";
+        }
         $stmt = $this->db->prepare($sql);
         return $stmt->execute();
     }

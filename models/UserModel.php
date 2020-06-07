@@ -31,4 +31,21 @@ class UserModel extends Model
         return $stmt->get_result()->fetch_object(UserModel::class);
     }
 
+    /**
+     * @return bool
+     */
+    public function isSessionUserAdmin()
+    {
+        if (empty($_SESSION['user_id'])) {
+            return FALSE;
+        } else {
+            $user = $this->getById($_SESSION['user_id']);
+            if ($user->role !== 'admin') {
+                return FALSE;
+            }
+        }
+
+        return TRUE;
+    }
+
 }
