@@ -20,8 +20,8 @@ class Router
         if (IS_DEV) {
             array_shift($route);
         }
-        $controllerName = array_shift($route);
-        $controller = ucfirst($controllerName . 'Controller');
+        $controllerName = ucfirst(array_shift($route));
+        $controller = $controllerName . 'Controller';
         $action = array_shift($route) . 'Action';
         require_once CONTROLLER_PATH . $controller . ".php";
         require_once MODEL_PATH . $controllerName . "Model.php";
