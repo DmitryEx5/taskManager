@@ -24,14 +24,14 @@
             }
             ?>
             <th>
-                <a href="index?page=<?= $pageNum ?>&sortBy=username&userSortType=<?= $userSortType ?>">Имя
+                <a href="/index?page=<?= $pageNum ?>&sortBy=username&userSortType=<?= $userSortType ?>">Имя
                     пользователя</a>
             </th>
             <th>
-                <a href="index?page=<?= $pageNum ?>&sortBy=email&emailSortType=<?= $emailSortType ?>">Email</a></th>
+                <a href="/index?page=<?= $pageNum ?>&sortBy=email&emailSortType=<?= $emailSortType ?>">Email</a></th>
             <th>Текст задачи</th>
             <th>
-                <a href="index?page=<?= $pageNum ?>&sortBy=status&statusSortType=<?= $statusSortType ?>">Статус</a>
+                <a href="/index?page=<?= $pageNum ?>&sortBy=status&statusSortType=<?= $statusSortType ?>">Статус</a>
             </th>
             <th></th>
         </tr>
@@ -39,7 +39,7 @@
         <tbody>
         <? foreach ($pageData['itemsOnPage'] as $item) { ?>
             <? if ($pageData['userRole'] == 'admin') { ?>
-                <form method="post" action="updateTask?page=<?= $pageNum ?>">
+                <form method="post" action="/updateTask?page=<?= $pageNum ?>">
                     <input type="hidden" name="task_id" value="<?= $item['id'] ?>">
                     <tr>
                         <th scope="row"><?= $item['id'] ?></th>
@@ -60,7 +60,7 @@
                                         }
                                         ?>
                                         <a class="dropdown-item"
-                                           href="updateTask?page=<?= $pageNum ?>&task_id=<?= $item['id'] ?>&status=<?= $key ?>&statusOnly=1"><?= $title ?></a>
+                                           href="/updateTask?page=<?= $pageNum ?>&task_id=<?= $item['id'] ?>&status=<?= $key ?>&statusOnly=1"><?= $title ?></a>
                                     <? } ?>
                                 </div>
                             </div>

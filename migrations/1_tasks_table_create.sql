@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `task_manager`.`tasks`
+CREATE TABLE IF NOT EXISTS `tasks`
 (
     `id`      INT(11)    NOT NULL AUTO_INCREMENT,
     `user_id` INT(11)    NOT NULL,
