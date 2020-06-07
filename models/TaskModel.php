@@ -32,9 +32,9 @@ class TaskModel extends Model
      * @param int $rightLimit
      * @return mixed
      */
-    public function getLimitTasks($leftLimit, $rightLimit)
+    public function getLimitTasks($leftLimit, $rightLimit, $orderBy = 'id ASC')
     {
-        $sql = "SELECT * FROM tasks LIMIT {$leftLimit}, {$rightLimit}";
+        $sql = "SELECT * FROM tasks ORDER BY {$orderBy} LIMIT {$leftLimit}, {$rightLimit}";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);

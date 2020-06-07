@@ -6,10 +6,31 @@
     <thead>
     <tr>
         <th>#</th>
-        <th><a href="sortBy?page=<?= $_GET['page'] ?>&type=username">Пользователь</a></th>
-        <th><a href="sortBy?page=<?= $_GET['page'] ?>&type=email">Почта</a></th>
+        <?php if (isset($_GET['userSortType']) && $_GET['userSortType'] == 'asc') {
+                $userSortType = 'desc';
+            } else {
+                $userSortType = 'asc';
+            }
+            if (isset($_GET['emailSortType']) && $_GET['emailSortType'] == 'asc') {
+                $emailSortType = 'desc';
+            } else {
+                $emailSortType = 'asc';
+            }
+            if (isset($_GET['statusSortType']) && $_GET['statusSortType'] == 'asc') {
+                $statusSortType = 'desc';
+            } else {
+                $statusSortType = 'asc';
+            }
+        ?>
+        <th>
+            <a href="index?page=<?= $_GET['page'] ?>&sortBy=username&userSortType=<?= $userSortType ?>">Пользователь</a>
+        </th>
+        <th>
+            <a href="index?page=<?= $_GET['page'] ?>&sortBy=email&emailSortType=<?= $emailSortType ?>">Почта</a></th>
         <th>Задача</th>
-        <th><a href="sortBy?page=<?= $_GET['page'] ?>&type=status">Статус</a></th>
+        <th>
+            <a href="index?page=<?= $_GET['page'] ?>&sortBy=status&statusSortType=<?= $statusSortType ?>">Статус</a>
+        </th>
         <? if ($pageData['userRole'] == 'admin') { ?>
             <th></th>
         <? } ?>

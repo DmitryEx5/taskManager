@@ -130,6 +130,23 @@ class TaskController extends Controller
             $rightLimit = $this->itemsPerPage;
         }
 
-        $this->pageData['itemsOnPage'] = $this->model->getLimitTasks($leftLimit, $rightLimit);
+        if (isset($_GET['sortBy'])) {
+            switch ($_GET['sortBy']) {
+                case 'username':
+                    $this->pageData['itemsOnPage'] = $this->model->getLimitTasks($leftLimit, $rightLimit,
+                        'username ' . strtoupper($_GET['userSortType']));
+                    break;
+                case 'email':
+                    $this->pageData['itemsOnPage'] = $this->model->getLimitTasks($leftLimit, $rightLimit,
+                        'email ' . strtoupper($_GET['emailSortType']));
+                    break;
+                case 'status':
+                    $this->pageData['itemsOnPage'] = $this->model->getLimitTasks($leftLimit, $rightLimit,
+                        'status ' . strtoupper($_GET['statusSortType']));
+                    break;
+            }
+        } else {
+            $this->pageData['itemsOnPage'] = $this->model->getLimitTasks($leftLimit, $rightLimit);
+        }
     }
 }
