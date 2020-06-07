@@ -26,6 +26,8 @@ class TaskController extends Controller
         if (!empty($_SESSION['user_id'])) {
             $user = $this->userModel->getById($_SESSION['user_id']);
             $this->pageData['userName'] = $user->username;
+        } elseif (isset($_GET['login']) && $_GET['login'] == FALSE) {
+            $this->pageData['errors']['userNotExists'] = 1;
         }
 
         $tpl = 'views/index.tpl.php';
@@ -48,18 +50,21 @@ class TaskController extends Controller
             $password = $_POST['pwd'];
             $user = $this->userModel->getByParams($userName, $password);
             if (empty($user)) {
-                $this->pageData['errors']['userNotExists'] = 1;
+                $_SESSION['user_id'] = NULL;
+                $login = 0;
             } else {
                 $_SESSION['user_id'] = $user->id;
+                $login = 1;
             }
         }
-        $this->indexAction();
+
+        $this->redirect('task', 'index', 'page=' . $_GET['page'] . '&login=' . $login);
     }
 
     public function logOutAction()
     {
         $_SESSION['user_id'] = NULL;
-        $this->indexAction();
+        $this->redirect('task', 'index', 'page=' . $_GET['page']);
     }
 
     public function createTaskAction()
@@ -70,7 +75,7 @@ class TaskController extends Controller
             $this->model->createTask($_POST['username'], $_POST['email'], $_POST['task']);
         }
 
-        $this->indexAction();
+        $this->redirect('task', 'index', 'page=' . $_GET['page']);
     }
 
     public function updateTaskAction()

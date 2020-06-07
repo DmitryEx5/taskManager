@@ -35,4 +35,17 @@ class Controller
         exit;
     }
 
+    /**
+     * @param $controller
+     * @param string $action
+     * @param string $query
+     */
+    public function redirect($controller, $action = "index", $query = '')
+    {
+        $query = empty($query) ? "" : "?" . $query;
+        $location = BASE_URL . $controller . "/" . $action . $query;
+        header("Location: /" . $location);
+        exit;
+    }
+
 }

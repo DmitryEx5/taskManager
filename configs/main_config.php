@@ -8,6 +8,7 @@ define("CONTROLLER_PATH", "controllers/");
 define("MODEL_PATH", "models/");
 define("VIEW_PATH", "views/");
 define("SERVICES", "services/");
+define("BASE_URL", IS_DEV ? 'taskManager/' : '/');
 
 require_once("db.php");
 require_once("taskConfigs.php");
