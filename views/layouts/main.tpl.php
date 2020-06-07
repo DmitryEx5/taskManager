@@ -33,15 +33,13 @@ $pageNum = empty($_GET['page']) ? 1 : $_GET['page'];
         </div>
     <? } ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <button class="btn btn-success" data-toggle="modal" data-target="#createTask">Добавить задачу</button>
-            <ul class="navbar-nav mr-auto">
-            </ul>
+        <div class="navbar-collapse" id="navbarSupportedContent">
+            <button class="btn btn-success float-left" data-toggle="modal" data-target="#createTask">Добавить задачу</button>
             <? if (empty($_SESSION['user_id'])) { ?>
-                <button class="btn btn-danger" data-toggle="modal" data-target="#logIn"> Вход</button>
+                <button class="btn btn-danger float-left" style="margin-left: 10px;" data-toggle="modal" data-target="#logIn"> Вход</button>
             <? } else { ?>
                 <form action="logOut?page=<?= $pageNum ?>" method="post">
-                    <button class="btn btn-danger" type="submit" data-target="#logOut"> Выход
+                    <button class="btn btn-danger float-left" style="margin-left: 10px;" type="submit" data-target="#logOut"> Выход
                         (<?= $pageData['userName'] ?>)
                     </button>
                 </form>
