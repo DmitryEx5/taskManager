@@ -9,11 +9,11 @@ $pageNum = empty($_GET['page']) ? 1 : $_GET['page'];
     <title><?= $pageData['title'] ?></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="<?= ROOT ?>/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="<?= ROOT ?>/bower_components/bootstrap/dist/css/bootstrap-grid.css" rel="stylesheet"
-          type="text/css">
+    <link href="<?= ROOT ?>/bower_components/bootstrap/dist/css/bootstrap-grid.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="<?= ROOT ?>/bower_components/jquery/dist/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="<?= ROOT ?>/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="<?= ROOT ?>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -128,6 +128,9 @@ $pageNum = empty($_GET['page']) ? 1 : $_GET['page'];
 
 <script>
     $('#errorHolder').delay(3000).slideUp(500);
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 </body>
 </html>

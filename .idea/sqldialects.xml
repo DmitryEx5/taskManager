@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/migrations/2_users_table_create.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/migrations/3_users_insert.sql" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/migrations/4_tasks_table_alter.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/migrations/5_task_table_structure_fix.sql" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/models/TaskModel.php" dialect="GenericSQL" />
   </component>
 </project>

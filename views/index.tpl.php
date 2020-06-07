@@ -23,17 +23,15 @@
             }
         ?>
         <th>
-            <a href="index?page=<?= $pageNum ?>&sortBy=username&userSortType=<?= $userSortType ?>">Пользователь</a>
+            <a href="index?page=<?= $pageNum ?>&sortBy=username&userSortType=<?= $userSortType ?>">Имя пользователя</a>
         </th>
         <th>
-            <a href="index?page=<?= $pageNum ?>&sortBy=email&emailSortType=<?= $emailSortType ?>">Почта</a></th>
-        <th>Задача</th>
+            <a href="index?page=<?= $pageNum ?>&sortBy=email&emailSortType=<?= $emailSortType ?>">Email</a></th>
+        <th>Текст задачи</th>
         <th>
             <a href="index?page=<?= $pageNum ?>&sortBy=status&statusSortType=<?= $statusSortType ?>">Статус</a>
         </th>
-        <? if ($pageData['userRole'] == 'admin') { ?>
-            <th></th>
-        <? } ?>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -76,7 +74,14 @@
                 <td><?= htmlspecialchars($item['username']); ?></td>
                 <td><?= htmlspecialchars($item['email']); ?></td>
                 <td><?= htmlspecialchars($item['task']); ?></td>
-                <td><?= $item['status'] ?></td>
+                <td>
+                    <?= $item['status'] ?>
+                </td>
+                <? if ($item['was_edited']) { ?>
+                    <td>
+                        <i data-toggle="tooltip" data-placement="top" title="Отредактировано администратором" class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    </td>
+                <? } ?>
             </tr>
         <? } ?>
     <? } ?>

@@ -98,7 +98,7 @@ class TaskModel extends Model
                 ";
         } else {
             $sql = "UPDATE tasks
-                SET task = '{$task}'
+                SET task = '{$task}', was_edited = 1
                 WHERE id = {$id}
                 ";
         }
