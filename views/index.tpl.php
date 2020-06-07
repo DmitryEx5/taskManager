@@ -24,14 +24,14 @@
             }
             ?>
             <th>
-                <a href="index?page=<?= $pageNum ?>&sortBy=username&userSortType=<?= $userSortType ?>">Имя
+                <a href="/index?page=<?= $pageNum ?>&sortBy=username&userSortType=<?= $userSortType ?>">Имя
                     пользователя</a>
             </th>
             <th>
-                <a href="index?page=<?= $pageNum ?>&sortBy=email&emailSortType=<?= $emailSortType ?>">Email</a></th>
+                <a href="/index?page=<?= $pageNum ?>&sortBy=email&emailSortType=<?= $emailSortType ?>">Email</a></th>
             <th>Текст задачи</th>
             <th>
-                <a href="index?page=<?= $pageNum ?>&sortBy=status&statusSortType=<?= $statusSortType ?>">Статус</a>
+                <a href="/index?page=<?= $pageNum ?>&sortBy=status&statusSortType=<?= $statusSortType ?>">Статус</a>
             </th>
             <th></th>
         </tr>
@@ -60,7 +60,7 @@
                                         }
                                         ?>
                                         <a class="dropdown-item"
-                                           href="updateTask?page=<?= $pageNum ?>&task_id=<?= $item['id'] ?>&status=<?= $key ?>&statusOnly=1"><?= $title ?></a>
+                                           href="/updateTask?page=<?= $pageNum ?>&task_id=<?= $item['id'] ?>&status=<?= $key ?>&statusOnly=1"><?= $title ?></a>
                                     <? } ?>
                                 </div>
                             </div>
