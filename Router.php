@@ -22,9 +22,14 @@ class Router
         }
         $controllerName = ucfirst(array_shift($route));
         $controller = $controllerName . 'Controller';
-        $action = array_shift($route) . 'Action';
+        if (empty($controllerName)) {
+            $controller = new Controller();
+            $controller->redirect('task');
+        }
+
         require_once CONTROLLER_PATH . $controller . ".php";
         require_once MODEL_PATH . $controllerName . "Model.php";
+        $action = array_shift($route) . 'Action';
         $controller = new $controller();
         $controller->$action();
     }
