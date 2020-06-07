@@ -38,7 +38,7 @@ $pageNum = empty($_GET['page']) ? 1 : $_GET['page'];
             <? if (empty($_SESSION['user_id'])) { ?>
                 <button class="btn btn-danger float-left" style="margin-left: 10px;" data-toggle="modal" data-target="#logIn"> Вход</button>
             <? } else { ?>
-                <form action="/logOut?page=<?= $pageNum ?>" method="post">
+                <form action="logOut?page=<?= $pageNum ?>" method="post">
                     <button class="btn btn-danger float-left" style="margin-left: 10px;" type="submit" data-target="#logOut"> Выход
                         (<?= $pageData['userName'] ?>)
                     </button>
@@ -70,7 +70,7 @@ $pageNum = empty($_GET['page']) ? 1 : $_GET['page'];
                 </button>
             </div>
             <div class="modal-body">
-                <form id="newTaskForm" method="post" name="newTaskForm" action="/createTask?page=<?= $pageNum ?>">
+                <form id="newTaskForm" method="post" name="newTaskForm" action="createTask?page=<?= $pageNum ?>">
                     <div class="form-group">
                         <label for="usernameTask" class="col-form-label">Пользователь:</label>
                         <input type="text" class="form-control" id="usernameTask" name="username" required>
@@ -104,7 +104,7 @@ $pageNum = empty($_GET['page']) ? 1 : $_GET['page'];
                 </button>
             </div>
             <div class="modal-body">
-                <form id="logInForm" method="post" name="logInForm" action="/logIn?page=<?= $pageNum ?>">
+                <form id="logInForm" method="post" name="logInForm" action="logIn?page=<?= $pageNum ?>">
                     <div class="form-group">
                         <label for="usernameLogIn" class="col-form-label">Пользователь:</label>
                         <input type="text" class="form-control" id="usernameLogIn" name="username" required>

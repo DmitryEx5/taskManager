@@ -31,13 +31,13 @@ class Pager
 
 
         if ($pages > 1) {
-            $pageLink = '/taskManager/task/index?page=1' . $addToLink;
+            $pageLink = '/task/index?page=1' . $addToLink;
             $pager = "<a href='{$pageLink}' aria-label='Previous'><span aria-hidden='true'>«</span> Начало</a> &nbsp;";
             for ($i = 2; $i <= $pages - 1; $i++) {
-                $pageLink = "/taskManager/task/index?page=" . $i . $addToLink;
+                $pageLink = "/task/index?page=" . $i . $addToLink;
                 $pager .= "<a href='$pageLink'>" . $i . "</a> &nbsp;";
             }
-            $pageLink = "/taskManager/task/index?page=" . $pages . $addToLink;
+            $pageLink = "/task/index?page=" . $pages . $addToLink;
             $pager .= "<a href='$pageLink' aria-label='Next'>Конец <span aria-hidden='true'>»</span></a>";
 
             return $pager;

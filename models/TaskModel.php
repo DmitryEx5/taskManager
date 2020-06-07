@@ -74,6 +74,9 @@ class TaskModel extends Model
      */
     public function createTask($username, $email, $task)
     {
+        $username = $this->db->real_escape_string($username);
+        $email = $this->db->real_escape_string($email);
+        $task = $this->db->real_escape_string($task);
         $sql = "INSERT INTO tasks(username, email, task, status)
                 VALUES('{$username}', '{$email}', '{$task}', 1)
                 ";
@@ -97,6 +100,7 @@ class TaskModel extends Model
                 WHERE id = {$id}
                 ";
         } else {
+            $task = $this->db->real_escape_string($task);
             $sql = "UPDATE tasks
                 SET task = '{$task}', was_edited = 1
                 WHERE id = {$id}

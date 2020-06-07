@@ -84,7 +84,7 @@ class TaskController extends Controller
             $this->model->createTask($_POST['username'], $_POST['email'], $_POST['task']);
         }
 
-        $this->redirect('task', 'index', 'page=' . $this->model->countAll());
+        $this->redirect('task', 'index', 'page=' . ceil($this->model->countAll() / $this->itemsPerPage));
     }
 
     public function updateTaskAction()
